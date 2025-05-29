@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="id">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Undangan Pernikahan Rahmat Ocean & Widya Fitriani</title>
+
+		<!-- Bootstrap CSS -->
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@400;600&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+			rel="stylesheet"
+		/>
+
+		<style>
+			/* Styling overlay awal */
+			body,
+			html {
+				height: 100%;
+				margin: 0;
+				font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+				background: #f2e9ea;
+			}
+
+			#overlay {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: rgba(255, 240, 240, 0.95);
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				z-index: 1000;
+			}
+
+			.card-invitation {
+				padding: 30px;
+				border-radius: 15px;
+				box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+				background-color: #fff;
+				text-align: center;
+			}
+
+			.btn-invitation {
+				background-color: #f15b6c;
+				color: #fff;
+				border: none;
+			}
+
+			.btn-invitation:hover {
+				background-color: #e04b5a;
+			}
+
+			/* Styling konten utama (undangan lengkap) */
+			.container {
+				max-width: 480px;
+				margin: auto;
+				position: relative;
+				background-image: url("assets/images/blank-leafy-frame-design_53876-97619.jpg");
+				background-size: cover;
+				background-position: center;
+				overflow: hidden;
+				display: none; /* disembunyikan awalnya */
+			}
+
+			.overlay-bg {
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background-color: rgba(0, 0, 0, 0.15);
+				z-index: 1;
+			}
+
+			nav {
+				background-color: #d98880;
+				padding: 15px;
+				text-align: center;
+				color: white;
+				font-size: 22px;
+				font-weight: bold;
+				letter-spacing: 1px;
+				font-family: "Great Vibes", cursive;
+				z-index: 2;
+				position: relative;
+			}
+
+			.header {
+				text-align: center;
+				padding: 40px 20px;
+				animation: fadeIn 2s ease;
+				position: relative;
+				z-index: 2;
+				color: #333;
+			}
+
+			.header h1 {
+				font-family: "Great Vibes", cursive;
+				font-size: 36px;
+				margin-bottom: 10px;
+				color: #3a1f18;
+				text-shadow: none;
+			}
+
+			.header p {
+				color: #5a3e36;
+				text-shadow: none;
+			}
+
+			.countdown {
+				display: flex;
+				justify-content: center;
+				gap: 20px;
+				font-size: 20px;
+				margin-top: 20px;
+				color: #5a3e36;
+				z-index: 2;
+				position: relative;
+			}
+
+			.countdown div {
+				background: rgba(217, 136, 128, 0.9);
+				padding: 10px;
+				border-radius: 8px;
+				min-width: 80px;
+				color: white;
+			}
+
+			.card-section {
+				position: relative;
+				z-index: 3;
+				background: rgba(255, 255, 255, 0.95);
+				background-image: url("assets/images/bg.jpg");
+				background-size: cover;
+				padding: 20px;
+				margin: 20px;
+				border-radius: 10px;
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+				animation: fadeInUp 2s ease;
+				color: #5a3e36;
+				text-align: center;
+			}
+
+			.card-section2 {
+				position: relative;
+				z-index: 3;
+				background: rgba(255, 255, 255, 0.95);
+				background-size: cover;
+				padding: 20px;
+				margin: 20px;
+				border-radius: 10px;
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+				animation: fadeInUp 2s ease;
+				color: #5a3e36;
+				text-align: center;
+			}
+
+			.card-section h3 {
+				margin-bottom: 10px;
+				font-weight: 600;
+				color: #b65c60;
+			}
+
+			.card-section2 h3 {
+				margin-bottom: 10px;
+				font-weight: 600;
+				color: #b65c60;
+			}
+
+			.map {
+				position: relative;
+				z-index: 3;
+				width: 100%;
+				height: 300px;
+				border-radius: 10px;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+			}
+
+			footer {
+				padding: 20px 0px;
+				text-align: center;
+				font-size: 14px;
+				background: #f1f1f1;
+				font-style: italic;
+			}
+
+			button {
+				padding: 10px 20px;
+				background: #d98880;
+				color: white;
+				border: none;
+				border-radius: 5px;
+				cursor: pointer;
+				transition: 0.3s;
+			}
+
+			button:hover {
+				background: #b65c60;
+			}
+
+			@keyframes fadeIn {
+				from {
+					opacity: 0;
+					transform: translateY(-20px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			@keyframes fadeInUp {
+				from {
+					opacity: 0;
+					transform: translateY(30px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			@media (max-width: 400px) {
+				nav {
+					font-size: 18px;
+					padding: 10px;
+				}
+				.header h1 {
+					font-size: 28px;
+				}
+				.countdown {
+					font-size: 16px;
+					gap: 10px;
+				}
+				.countdown div {
+					min-width: 80px;
+					padding: 8px;
+				}
+				.map {
+					height: 200px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<!-- Overlay undangan awal -->
+		<div id="overlay">
+			<div class="card card-invitation">
+				<h6 class="text-muted">THE WEDDING OF</h6>
+				<h4>Rahmat Ocean</h4>
+				<span
+					style="color: #f15b6c; font-size: 1.5rem; font-weight: bold"
+					>&</span
+				>
+				<h4>Widya Fitriani</h4>
+				<p>Rabu, 18 Juni 2025 | 10:00 WIB - Selesai</p>
+				<hr />
+				<p>Kepada Yth.<br /><strong>Bapak/Ibu/Saudara/i</strong></p>
+				<h4 style="color: #f15b6c" id="guest-name">-</h4>
+				<button
+					class="btn btn-invitation mt-3"
+					onclick="openInvitation()"
+				>
+					Buka Undangan
+				</button>
+			</div>
+		</div>
+
+		<!-- Konten undangan lengkap, hidden awalnya -->
+		<div class="container" id="invitationContent">
+			<div class="overlay-bg"></div>
+			<nav><i class="bi bi-heart-fill"></i> Wedding Invitation</nav>
+
+			<div class="header">
+				<h1>Rahmat Ocean</h1>
+				<h1>&amp;</h1>
+				<h1>Widya Fitriani</h1>
+				<i
+					class="bi bi-heart-fill"
+					style="font-size: 30px; color: #e74c3c"
+				></i>
+				<p>Undangan Pernikahan</p>
+				<div class="countdown">
+					<div>
+						<i class="bi bi-clock"></i><br />
+						<span class="angka" id="jam">--</span><br />
+						<span class="label">Jam</span>
+					</div>
+					<div>
+						<i class="bi bi-clock-history"></i><br />
+						<span class="angka" id="menit">--</span><br />
+						<span class="label">Menit</span>
+					</div>
+					<div>
+						<i class="bi bi-stopwatch"></i><br />
+						<span class="angka" id="detik">--</span><br />
+						<span class="label">Detik</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="card-section">
+				<h3><i class="bi bi-calendar-heart"></i> Akad & Resepsi</h3>
+				<p>Rabu, 18 Juni 2025</p>
+				<p>10:00 WITA - Selesai</p>
+				<p>
+					<i class="bi bi-geo-alt-fill"></i> Hotel Claro Kendari<br />
+					<span style="font-style: italic">
+						Jl. Edi Sabara No.89, Lahundape, <br />
+						Kec. Kendari Barat, Kota Kendari
+					</span>
+				</p>
+			</div>
+
+			<div class="card-section2">
+				<h3><i class="bi bi-map"></i> Lokasi Acara</h3>
+				<iframe
+					class="map"
+					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3980.243914917829!2d122.52825750000001!3d-3.970122099999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2d98f298666f001f%3A0x8e90cd3d68630781!2sCLARO%20Kendari!5e0!3m2!1sid!2sid!4v1748529005339!5m2!1sid!2sid"
+					allowfullscreen=""
+					loading="lazy"
+					referrerpolicy="no-referrer-when-downgrade"
+				></iframe>
+			</div>
+
+			<footer>
+				<p>
+					Kami mengucapkan terima kasih sedalam-dalamnya <br />
+					atas doa dan kehadirannya
+				</p>
+				<p>Rahmat Ocean & Widya Fitriani</p>
+			</footer>
+
+			<!-- Musik undangan -->
+			<audio id="bgMusic" loop>
+				<source src="assets/music/sound.mp3" type="audio/mpeg" />
+				Your browser does not support the audio element.
+			</audio>
+		</div>
+
+		<script>
+			// Simulasi nama tamu, bisa di-set dari server atau prompt
+			const params = new URLSearchParams(window.location.search);
+			const guestName = params.get("to");
+
+			document.getElementById("guest-name").textContent = guestName;
+
+			function openInvitation() {
+				// Sembunyikan overlay
+				document.getElementById("overlay").style.display = "none";
+				// Tampilkan konten undangan utama
+				const invitationContent =
+					document.getElementById("invitationContent");
+				invitationContent.style.display = "block";
+
+				// Mainkan musik
+				const music = document.getElementById("bgMusic");
+				music.play().catch(() => {
+					// Kalau autoplay diblokir, tampilkan instruksi
+					alert(
+						"Klik tombol play pada musik jika tidak otomatis terdengar."
+					);
+				});
+
+				// Mulai countdown sederhana menuju hari H
+				startCountdown();
+                playMusic();
+			}
+
+            function playMusic() {
+                const music = document.getElementById("bgMusic");
+                music.play();
+            }
+
+			function startCountdown() {
+				const jamElem = document.getElementById("jam");
+				const menitElem = document.getElementById("menit");
+				const detikElem = document.getElementById("detik");
+
+				const eventDate = new Date("2025-06-18T02:00:00Z"); // 10:00 WITA = 02:00 UTC
+
+				function updateCountdown() {
+					const now = new Date();
+					const diff = eventDate - now;
+
+					if (diff <= 0) {
+						jamElem.textContent = "00";
+						menitElem.textContent = "00";
+						detikElem.textContent = "00";
+						clearInterval(timer);
+						return;
+					}
+
+					const hours = Math.floor(diff / (1000 * 60 * 60));
+					const minutes = Math.floor(
+						(diff % (1000 * 60 * 60)) / (1000 * 60)
+					);
+					const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+					jamElem.textContent = hours.toString().padStart(2, "0");
+					menitElem.textContent = minutes.toString().padStart(2, "0");
+					detikElem.textContent = seconds.toString().padStart(2, "0");
+				}
+
+				updateCountdown();
+				const timer = setInterval(updateCountdown, 1000);
+			}
+		</script>
+	</body>
+</html>
